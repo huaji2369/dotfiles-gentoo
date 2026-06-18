@@ -1,0 +1,6 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export EDITOR:nvim
+SETUVAR --export VISUAL:codium\x20\x2d\x2dwait
+SETUVAR __fish_initialized:4300
+SETUVAR fish_greeting:\x1d

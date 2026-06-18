@@ -1,0 +1,50 @@
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="QQ"
+    exclude title="^QQ$"
+    open-floating true
+    default-column-width {}
+}
+
+window-rule {
+    match app-id="kitty"
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="cod(e|ium)"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="osu!"
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id="wpsoffice"
+    match app-id="wps"
+    exclude title="WPS Office$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="wpsoffice" title="WPS Office$"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="scrcpy"
+    default-column-width { proportion 0.25; }
+}
+
+window-rule {
+    match app-id="wechat"
+    exclude title="^微信$"
+    open-floating true
+    default-column-width {}
+}

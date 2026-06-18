@@ -1,0 +1,9 @@
+vim.api.nvim_create_autocmd('FileType',{
+    pattern='fish',
+    callback=function()
+        vim.lsp.start({
+            name='fish-lsp',
+            cmd={'fish-lsp','start'},
+        })
+    end,
+})

@@ -1,0 +1,257 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 1,
+    "margin": 0,
+    "modules-left": [
+        "group/hardware",
+        //->"custom/hardware-wrap",
+        //->"cpu",
+        //->"memory",
+        //->"disk",
+        "niri/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "niri/window"
+    ],
+    "modules-right": [
+        "group/info",
+        //->"wireplumber#sink",
+        //->"backlight",
+        //->"network",
+        //->"battery",
+        "clock",
+        "group/session",
+        //->"custom/lock",
+        //->"custom/logout",
+        //->"custom/reboot",
+        //->"custom/power",
+        "group/tray-drawer"
+        //->"custom/placeholder-tray",
+        //->"tray"
+    ],
+//modules-left:
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+        	  "transition-duration": 500,
+        	  "transition-left-to-right": true
+        },
+        "modules": [
+        	"custom/hardware-wrap",
+            "power-profiles-daemon",
+        	"cpu",
+        	"memory",
+            "disk"
+        ]
+    },
+    /*group/hardware*/
+    "custom/hardware-wrap": {
+        "format": "\ue7e6",
+        "tooltip": false
+    },
+    "cpu": {
+        "format": "󰘚 {usage}%",
+        "tooltip": true,
+        "interval": 1,
+        "on-click": "kitty sudo htop"
+    },
+    "memory": {
+        "format": "󰍛 {}%",
+        "interval": 1,
+        "on-click": "kitty sudo htop"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/home"
+    },
+    /*end group/hardware*/
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "󰝥",
+            "default": "󰝦"
+        }
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 16,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "app_ids-mapping": {
+            "osu!": "osu!"
+        }
+    },
+
+//modules-center:
+    "niri/window": {
+    	"format": "<span color='#FFFFFF'>{title}</span>",
+        "tooltip": false
+    },
+
+//modules-right:
+    "group/info": {
+    "orientation": "horizontal",
+    "drawer": {
+    	  "transition-duration": 500,
+    	  "transition-left-to-right": false
+    },
+    "modules": [
+        "wireplumber#sink",
+        "backlight",
+        "network",
+        "battery"
+    ]
+    },
+    /*group/info*/
+    "wireplumber#sink": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 Mute",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pwvucontrol",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+"
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
+        "on-scroll-up": "brightnessctl set +1%",
+        "on-scroll-down": "brightnessctl set 1%-"
+    },
+    "network": {
+        "format-wifi": "󰖩 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}\n↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
+        "on-click-right": "kitty nmtui"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    /*end group/info*/
+    "clock": {
+        "interval": 1,
+        "format": "󰥔 {:%H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small><span font='Noto Sans Mono CJK SC'>{calendar}</span></small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#d3c6aa'><b>{}</b></span>",
+                "days": "<span color='#e67e80'>{}</span>",
+                "weeks": "<span color='#a7c080'><b>W{}</b></span>",
+                "weekdays": "<span color='#7fbbb3'><b>{}</b></span>",
+                "today": "<span color='#dbbc7f'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "group/session": {
+        "orientation": "horizontal",
+        "drawer": {
+        	  "transition-duration": 500,
+        	  "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/lock",
+            "custom/logout",
+            "custom/reboot",
+            "custom/power"
+        ]
+    },
+    /*group/session*/
+    "custom/lock": {
+        "format": "<span color='#00FFFF'>  </span>",
+        "on-click": "swaylock",
+        "tooltip": true,
+        "tooltip-format": "Lock screen"
+    },
+    "custom/logout": {
+        "format": "<span color='#FFFF00'>  </span>",
+        "on-click": "niri msg action quit --skip-confirmation",
+        "tooltip": true,
+        "tooltip-format": "Logout"
+    },
+    "custom/reboot": {
+        "format": "<span color='#00FF00'>  </span>",
+        "on-click": "loginctl reboot",
+        "on-click-right": "fish ~/.config/resource/power.fish",
+        "tooltip": true,
+        "tooltip-format": "Reboot"
+    },
+    "custom/power": {
+        "format": "<span color='#FF4040'>  </span>",
+        "on-click": "loginctl poweroff",
+        "on-click-right": "fish ~/.config/resource/power.fish",
+        "tooltip": true,
+        "tooltip-format": "Power Off"
+    },
+    /*end group/session*/
+    "group/tray-drawer": {
+        "orientation": "horizontal",
+        "drawer": {
+        	  "transition-duration": 500,
+        	  "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/placeholder-tray",
+            "tray"
+        ]
+    },
+    /*group/tray-drawer*/
+    "custom/placeholder-tray": {
+        "format": "󱊖",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 5
+    }
+    /*end group/tray-drawer*/
+}

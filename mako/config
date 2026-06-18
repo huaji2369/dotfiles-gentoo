@@ -1,0 +1,10 @@
+#style
+font=Fira Code 12
+default-timeout=5000
+ignore-timeout=1
+background-color=#000000cc
+text-color=#ffffffff
+border-color=#ffffffff
+on-button-left=invoke-default-action
+on-button-middle=exec makoctl menu -n "$id" -- fuzzel --dmenu --mesg "Select Action" --prompt "Action:" --anchor top-right
+on-button-right=dismiss
