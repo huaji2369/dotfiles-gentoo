@@ -9,7 +9,8 @@
         //->"custom/hardware-wrap",
         //->"cpu",
         //->"memory",
-        //->"disk",
+        //->"disk#home",
+        //->"disk#root",
         "niri/workspaces",
         "wlr/taskbar"
     ],
@@ -44,7 +45,8 @@
             "power-profiles-daemon",
         	"cpu",
         	"memory",
-            "disk"
+            "disk#home",
+            "disk#root"
         ]
     },
     /*group/hardware*/
@@ -55,18 +57,21 @@
     "cpu": {
         "format": "󰘚 {usage}%",
         "tooltip": true,
-        "interval": 1,
-        "on-click": "kitty sudo htop"
+        "interval": 1
     },
     "memory": {
         "format": "󰍛 {}%",
-        "interval": 1,
-        "on-click": "kitty sudo htop"
+        "interval": 1
     },
-    "disk": {
+    "disk#home": {
         "interval": 30,
-        "format": "󰋊 {percentage_used}%",
+        "format": "󰋊|\udb80\udedc {percentage_used}%",
         "path": "/home"
+    },
+    "disk#root": {
+        "interval": 30,
+        "format": "󰋊|\udb83\udfe0 {percentage_used}%",
+        "path": "/"
     },
     /*end group/hardware*/
     "niri/workspaces": {
