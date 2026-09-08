@@ -1,9 +1,9 @@
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Open Application selector: fuzzel" {spawn "fuzzel" "--placeholder" "搜索应用";}
+    Mod+Shift+3 hotkey-overlay-title="Open a root Terminal: kitty" { spawn "kitty" "sudo" "fish"; }
+    Mod+D hotkey-overlay-title="Open Application selector: fuzzel" { spawn "fuzzel" "--placeholder" "搜索应用";}
     Mod+B hotkey-overlay-title="Run Browser: firefox" { spawn "firefox"; }
-    Mod+E hotkey-overlay-title="Run File manager: yazi" { spawn "kitty" "--app-id=yazi" "yazi"; }
     Mod+M hotkey-overlay-title="Open Task manager: htop"{ spawn "kitty" "--app-id=htop" "--config=/home/huaji2369/.config/kitty/kitty_htop.conf" "sudo" "htop"; }
     Mod+S hotkey-overlay-title="Screen cast with Scrcpy" { spawn "scrcpy"; }
     Mod+A hotkey-overlay-title="Screen record with OBS studio" { spawn "env" "QT_QPA_PLATFORM=xcb" "obs"; }
