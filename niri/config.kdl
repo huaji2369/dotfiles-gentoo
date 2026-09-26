@@ -55,7 +55,6 @@ animations {
 
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
-    LANG                         "zh_CN.UTF-8"
     QT_IM_MODULE                 "fcitx"
     QT_IM_MODULES                "wayland;fcitx"
     SDL_VIDEO_DRIVER             "wayland"
@@ -68,6 +67,7 @@ spawn-at-startup "swayidle" "timeout" "600" "swaylock" "timeout" "900" "niri msg
 spawn-at-startup "gentoo-pipewire-launcher"
 spawn-at-startup "FlClash"
 spawn-at-startup "fcitx5"
+spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 
 include "window-rules.kdl"
 
